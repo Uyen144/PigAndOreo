@@ -16,9 +16,7 @@ public class Move : MonoBehaviour
     Rigidbody2D rigi;
     [SerializeField] Text score_text;
     public GameObject obstacles;
-    public GameObject bomb;
    
-    
     void Start()
     {
         rigi = this.GetComponent<Rigidbody2D>();
@@ -26,7 +24,7 @@ public class Move : MonoBehaviour
     }
     void Update()
     {
-       score_text.text = "Score: " + score.ToString();
+       score_text.text = "SCORE: " + score.ToString();
     
        rigi.velocity = (Vector3)movement * Speed * Time.deltaTime;//ko có cái này là lợn ko run đc đâu, khổ
     }
@@ -74,11 +72,11 @@ public class Move : MonoBehaviour
         //Khoảng random để lớn lên 1 chút. nãy để là -5 với -2 thì food mới sinh ra nó quá gần food cũ
         //làm phát sinh trường hợp là vừa sinh ra đã va vào player và biến mất luôn ==> nhảy score 
         //Để tránh trường hợp này hoàn toàn thì cần có thêm 1 bước nữa
-        Vector2 spawnPos = new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
+        Vector2 spawnPos = new Vector2(Random.Range(-4.5f, 4.5f), Random.Range(-4.5f, 4.5f));
         while(Vector2.Distance(old_pos,spawnPos) <= 1){
             // kiểm tra vị trí của food mới sinh ra có đủ xa so với vị trí cả foood vừa ăn hay ko 
             //nếu quá gần thì tiếp tục random đến khi nào đủ xa thì thôi.
-            spawnPos = new Vector2(Random.Range(-5f, 5f), Random.Range(-5f, 5f));
+            spawnPos = new Vector2(Random.Range(-4.5f, 4.5f), Random.Range(-4.5f, 4.5f));
         }
         
         if (obstacles)
